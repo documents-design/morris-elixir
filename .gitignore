@@ -23,3 +23,6 @@ erl_crash.dump
 morris_elixir-*.tar
 
 .elixir_ls
+
+*.iml
+.idea

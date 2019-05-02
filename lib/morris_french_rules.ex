@@ -25,8 +25,25 @@ defmodule MorrisFrenchRules do
       "Hello everybody"
   """
   def rep_multiple_spaces_in_a_row_with_a_single_one(str), do: String.replace(str, ~r/\s+/, " ")
-  def rep_three_dots_with_an_ellipsis(str), do: str 
-  def rep_any_double_quote_with_dumb_quotes(str), do: str 
+
+  @doc """
+  Replaces three dots (...) with an ellipsis (…) character.
+
+  ## Examples
+      iex> MorrisFrenchRules.rep_three_dots_with_an_ellipsis("Bonjour...")
+      "Bonjour…"
+  """
+  def rep_three_dots_with_an_ellipsis(str), do: String.replace(str, ~r/\.\.\./, "…")
+
+  @doc """
+  Replaces any kind of double quote with normal double quotes (")
+
+  ## Examples
+      iex> MorrisFrenchRules.rep_any_double_quote_with_dumb_quotes("“Oh!” «Wow»")
+      ~s("Oh!" "Wow")
+  """
+  def rep_any_double_quote_with_dumb_quotes(str), do: String.replace(str, ~r/[“”«»]/, ~s("))
+
   def removes_spaces_before_simple_punctuations_and_symbols(str), do: str 
   def removes_spaces_after_simple_punctuations_and_symbols(str), do: str 
   def rep_quotes_with_french_quotes(str), do: str 
